@@ -12,6 +12,10 @@
 .headerlinks{
     
 }
+a {
+    text-decoration: none; /* Убирает подчеркивание ссылки */
+    color: inherit; /* Унаследует цвет текста от родительского элемента */
+}
 .headerlink{
     margin-left: 30px;
 }

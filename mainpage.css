@@ -1,15 +1,27 @@
 .logobackground{
     height: 70vh;
     width: 100vw;
-    background-image: url(images/backgroundairpods.jpeg);
+    background-image: url(images/backgroundairpods1.jpeg);
     background-size: cover;
     color: white;
     position: relative;
+}
+.logobackground::before {
+    content: "";
+    background: black; /* Черный фон для затемнения */
+    opacity: 0.5; /* Прозрачность для настройки степени затемнения */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 .divlogo{
     position: absolute;
     top: 30%;
     left: 10%;
+    z-index: 2;
 }
 .divlogobigfont{
     font-size: 38px;
@@ -36,8 +48,137 @@ padding: 0px 60px;
 height: 60px;
 
 }
-.unicoffer{
+.biglabel{
     display: flex;
     justify-content: center;
     font-size: 46px;
+    padding-top: 60px;
+    padding-bottom: 30px;
+}
+.products{
+    display: flex;
+    flex-direction: row;
+    width: 70vw;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.productimages{
+    position: relative;
+    width: 260px;
+    height: 285px;
+}
+.productflex{
+    display: flex;
+    flex-direction: column;
+    width: 260px;
+}
+body{
+    overflow-x: hidden;
+}
+.productname{
+    font-size: 16px;
+    font-weight: bold;
+}
+.productdescription{
+    font-size: 14px;
+    margin-top: 15px;
+}
+.classicprice{
+    font-size: 16px;
+    font-weight: 400;
+}
+.oldprice{
+    font-size: 16px;
+    font-weight: 400;
+    color: #bdbdbd;
+    margin-left: 15px;
+}
+.productprices{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 15px;
+}
+.productmoreinfo{
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    width: 100px;
+    height: 35px;
+    border-radius: 5px;
+}
+.productbuy{
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    width: 150px;
+    height: 35px;
+    border-radius: 5px;
+}
+.thumbnail, .preview {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    transition: opacity 0.3s ease-in-out; /* Плавное изменение прозрачности */
+}
+.thumbnail{
+    z-index: 1;
+}
+.thumbnail:hover {
+    opacity: 0; /* При наведении на миниатюру, делаем её невидимой */
+}
+.product{
+    margin-left: 60px;
+}
+.center{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.middlebuttondiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+.middlebutton{
+    padding: 0px 60px;
+    height: 60px;
+    background-color: white;
+    border: 3px solid black;
+}
+.blacklinediv{
+    height: 170px;
+    width: 100vw;
+    background-color: #1f2029;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+.blacktext{
+    color: white;
+    width: 820px;
+    height: 60px;
+    font-size: 22px;
+}
+.blackbutton{
+    width: 285px;
+    height: 55px;
+    font-weight: bold;
+}
+.aboutus{
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    padding-top: 0px;
+    padding-bottom: 30px;
 }
