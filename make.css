@@ -1,0 +1,22 @@
+.centermake{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.makeblackdiv{
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.logomake{
+    font-size: 72px;
+}
+.discriptionmake{
+    font-size: 24px;
+}
