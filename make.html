@@ -5,6 +5,8 @@
     <title>Custom Apple | Магазин кастомных наушников Airpods</title>
     <link rel="stylesheet" type="text/css" href="header.css">
     <link rel="stylesheet" type="text/css" href="make.css">
+    <link rel="stylesheet" type="text/css" href="phone.css">
+
 
     <link href="foundation.css" rel="stylesheet" type="text/css" />
   <link href="twentytwenty-no-compass.css" rel="stylesheet" type="text/css" />
@@ -43,6 +45,18 @@
         </div>
       </div>
   </div>
+  <div class="sendform">
+    <div class="input-container">
+      <input class="inputname" type="text" id="my-input">
+      <label for="my-input" class="gray-label">Имя</label>
+      
+    </div>
+    <div class="input-container">
+      <input class="inputname" type="text" id="telephoneinput">
+      
+    </div>
+    <div></div>
+  </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script src="js/jquery.event.move.js"></script>
 <script src="js/jquery.twentytwenty.js"></script>
@@ -52,6 +66,29 @@
       
     });
     </script>
+  <script src="js/telephone.js"></script>
+  
+  <script>
+    const input = document.querySelector("#telephoneinput");
+    window.intlTelInput(input, {
+      initialCountry: "auto",
+      geoIpLookup: function(callback) {
+      fetch("https://ipapi.co/json")
+      .then(function(res) { return res.json(); })
+      .then(function(data) { callback(data.country_code); })
+      .catch(function() { callback("us"); });
+      
+  },
+  nationalMode: true,
+  formatOnDisplay: true,
+
+      utilsScript: "js/utils.js",
+      
+
+      
+    });
+  </script>
+
 </body>
 
 </html>

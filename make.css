@@ -20,3 +20,23 @@
 .discriptionmake{
     font-size: 24px;
 }
+.gray-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #999; /* Серый цвет текста */
+    pointer-events: none; /* Позволяет событиям проходить сквозь текст */
+    transition: opacity 0.3s; /* Плавное изменение прозрачности */
+}
+.input-container {
+    position: relative;
+}
+.inputname:focus + .gray-label {
+    opacity: 0; /* При фокусировке на input, серая надпись исчезнет */
+}
+.sendform{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
