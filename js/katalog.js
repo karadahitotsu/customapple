@@ -75,7 +75,7 @@ function customFetch(filters) {
     container.innerHTML=''
 
     // Формирование URL с параметрами фильтров
-    const url = new URL('http://localhost:8080/katalog');
+    const url = new URL('http://5.39.32.179:8080/katalog');
     url.search = params.toString();
     fetch(url, {
         method: 'GET'
