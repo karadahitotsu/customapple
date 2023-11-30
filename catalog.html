@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="header.css">
+    <link rel="stylesheet" type="text/css" href="catalog.css">
+    <title>Каталог кастомных наушников Aitpods Custom Apple</title>
+</head>
+<body>
+    <header>
+        <div class="headerdiv">
+            <img>
+            <div class="headerlinks">
+                <a class="headerlink" href="catalog.html">Каталог</a>
+                <a class="headerlink" href="index.html">О нас</a>
+                <a class="headerlink" href="make.html">Покрасим ваши</a>
+                <a class="headerlink">B2B</a>
+                <a class="headerlink">Галерея</a>
+            </div>
+            <div class="headercontacts">
+                <img>
+                <img>
+                <img>
+                <img>
+            </div>
+        </div>
+    </header>
+<body>
+    <div id="checkboxContainer">
+        <div class="category">
+        <input type="checkbox" id="airpods 1" name="airpods 1" onchange="handleCheckboxChange(this)">
+        <label for="airpods 1">airpods 1</label><br>
+        </div>
+        <div class="category">
+        <input type="checkbox" id="airpods 2" name="airpods 2" onchange="handleCheckboxChange(this)">
+        <label for="airpods 2">airpods 2</label><br>
+        </div>
+        <div class="category">
+        <input type="checkbox" id="airpods 3" name="airpods 3" onchange="handleCheckboxChange(this)">
+        <label for="airpods 3">airpods 3</label><br>
+        </div>
+        <div class="category">
+        <input type="checkbox" id="airpods pro 1" name="airpods pro 1" onchange="handleCheckboxChange(this)">
+        <label for="airpods pro 1">airpods pro 1</label><br>
+        </div>
+        <div class="category">
+        <input type="checkbox" id="airpods pro 2" name="airpods pro 2" onchange="handleCheckboxChange(this)">
+        <label for="airpods pro 2">airpods pro 2</label><br>
+        </div>
+        <button class="search" onclick="customFetch(selectedItems)"> search</button>
+    </div>
+    <div class="products" id="products">
+
+    </div>
+
+    <script>
+        let selectedItems = [];
+
+        function handleCheckboxChange(checkbox) {
+            if (checkbox.checked) {
+                selectedItems.push(checkbox.id);
+            } else {
+                const index = selectedItems.indexOf(checkbox.id);
+                if (index > -1) {
+                    selectedItems.splice(index, 1);
+                }
+            }
+
+            // Для примера: выведем выбранные элементы в консоль
+            console.log("Выбранные элементы:", selectedItems);
+        }
+    </script>
+   <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch('http://localhost:8080/katalog', {
+            method: 'GET'
+        })
+        .then(response => {
+        // Проверяем статус ответа
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        // Извлекаем содержимое ответа в формате JSON
+        return response.json();
+    })
+    .then(data => {
+        // Обработка данных, полученных в формате JSON
+        console.log('Ответ от сервера получен', data);
+        kataloggeneration(data);
+    })
+    .catch(error => {
+        // Обработка ошибок
+        console.error('Ошибка при отправке запроса:', error);
+    });
+    });
+</script>
+
+
+<script src="js/katalog.js"></script>
+</body>
+</html>

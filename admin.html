@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ADMIN PANEL</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Добавить новый продукт</h1>
+    <form id="addProductForm" enctype="multipart/form-data">
+        <label for="name">Наименование:</label>
+        <input type="text" id="name" name="name"><br><br>
+        
+        <label for="price">Цена:</label>
+        <input type="text" id="price" name="price"><br><br>
+        
+        <label for="image">Файл изображения:</label>
+        <input type="file" id="image" name="image"><br><br>
+        
+        <label for="imagePreview">Файл превью изображения:</label>
+        <input type="file" id="imagePreview" name="imagePreview"><br><br>
+        
+        <label for="model">Модель:</label>
+        <select id="model" name="model">
+            <option value="airpods 1">AirPods 1</option>
+            <option value="airpods 2">AirPods 2</option>
+            <option value="airpods 3">AirPods 3</option>
+            <option value="airpods pro 1">AirPods Pro 1</option>
+            <option value="airpods pro 2">AirPods Pro 2</option>
+        </select><br><br>
+        
+        <input type="submit" value="Добавить продукт">
+    </form>
+    
+    <script>
+        $(document).ready(function(){
+            $('#addProductForm').submit(function(e){
+                e.preventDefault();
+                var formData = new FormData(this);
+                
+                $.ajax({
+                    url: 'http://localhost:8080/katalog',
+                    type: 'POST',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(response){
+                        alert('Product added successfully!');
+                        // Дополнительные действия при успешном добавлении продукта
+                    },
+                    error: function(xhr, status, error){
+                        alert('Failed to add product: ' + error); // Используем параметр error для вывода точного сообщения об ошибке
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

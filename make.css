@@ -30,13 +30,26 @@
 }
 .input-container {
     position: relative;
+    background-color: transparent;
+    color: black;
+    border: 2px solid white;
+    vertical-align: middle;
+
 }
 .inputname:focus + .gray-label {
-    opacity: 0; /* При фокусировке на input, серая надпись исчезнет */
+    opacity: 0; /* При фоку
+    сировке на input, серая надпись исчезнет */
+}
+.inputname{
+    color: black;
+    border: 2px solid black;
+    width: 20vw;
+    height: 3;
 }
 .sendform{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    
 }

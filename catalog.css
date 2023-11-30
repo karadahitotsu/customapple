@@ -1,0 +1,102 @@
+.products{
+    display: flex;
+    flex-direction: row;
+    width: 70vw;
+    justify-content: center;
+    margin-left: 15vw;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.productimages{
+    position: relative;
+    width: 20vw;
+    height: 30vh;
+}
+.productflex{
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+}
+.productname{
+    font-size: 16px;
+    font-weight: bold;
+    align-items: center;
+    text-align: center;
+}
+.productbuttons{
+    align-items: center;
+    text-align: center;
+}
+.classicprice{
+    font-size: 16px;
+    font-weight: 400;
+}
+.productprices{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 15px;
+}
+.thumbnail, .preview {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: contain;
+    transition: opacity 0.3s ease-in-out; /* Плавное изменение прозрачности */
+}
+.thumbnail{
+    z-index: 1;
+}
+.thumbnail:hover {
+    opacity: 0; /* При наведении на миниатюру, делаем её невидимой */
+}
+.product{
+    margin-left: 3vw;
+}
+.productbuy{
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    width: 150px;
+    height: 35px;
+    border-radius: 5px;
+}
+#checkboxContainer {
+    padding-left: 10px;
+    width: 20vw; /* Ограничиваем ширину до максимума 20vw */
+    position: absolute;
+    vertical-align: middle;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: space-evenly;
+    height: 90%;
+}
+.category{
+    width: 60%;
+    font-size: 22px;
+
+}
+input[type="checkbox"] {
+    /* Устанавливаем цвет фона чекбокса на красный */
+    background-color: red;
+  }
+  
+
+input[type="checkbox"] {
+    margin: 5px 0;
+}
+.checkbox{
+    margin-bottom: 50px;
+}
+.search{
+    width: 10vw;
+    background-color: orange;
+    border: none;
+    color: white;
+    height: 5vh;
+}
