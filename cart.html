@@ -98,12 +98,12 @@
                 function createProductHTML(product){
                     var productDiv = document.createElement("div");
                     var name = document.createElement("p")
-                    name.textContent(product.name);
+                    name.textContent=(product.name);
                     
                     var price = createElement("p")
-                    price.textContent(product.price+" рублей")
+                    price.textContent=(product.price+" рублей")
                     var model = createElement("p")
-                    model.textContent(product.model)
+                    model.textContent=(product.model)
                     return productDiv
                 }
         </script>
