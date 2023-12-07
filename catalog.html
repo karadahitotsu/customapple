@@ -17,7 +17,7 @@
                 <a class="headerlink" href="galery.html">Галерея</a>
             </div>
             <div class="headeruser">
-                <a class="headerlink" href="login.html">Войти</a>
+                <a class="headerlink" id="login" href="login.html">Войти</a>
                 <a class="headerlink" href="cart.html">Корзина</a>
             </div>
         </div>
@@ -67,6 +67,8 @@
             console.log("Выбранные элементы:", selectedItems);
         }
     </script>
+        <script src="js/iflogin.js"></script>
+
    <script>
     document.addEventListener("DOMContentLoaded", function() {
         fetch('http://5.39.32.179:8080/katalog', {
