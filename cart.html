@@ -104,12 +104,45 @@
                     price.textContent=(product.price+" рублей")
                     var model = document.createElement("p")
                     model.textContent=(product.model)
+                    var deletebutton = document.createElement("button")
+                    deletebutton.textContent = "удалить товар"
+                    deletebutton.addEventListener('click',function(){
+                        const param1 = getCookieValue("userId");
+                        const param2 = product.id;
+                        removeFromCart(param1,param2)
+
+                    })
                     productDiv.appendChild(name);
                     productDiv.appendChild(price);
                     productDiv.appendChild(model);
+                    productDiv.appendChild(deletebutton)
 
                     return productDiv
                 }
+                
+        </script>
+        <script>
+            function removeFromCart(userid,productid){
+                const url = new URL('http://5.39.32.179:8080/cart?userId='+userid+"&productId="+productid)
+                fetch(url,{
+                    method: 'DELETE'
+                }).then(response => {
+        // Проверяем статус ответа
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+        // Извлекаем содержимое ответа в формате JSON
+                            return response.json();
+                            }).then(data => {
+        // Обработка данных, полученных в формате JSON
+                                console.log(data)
+                            })
+                            .catch(error => {
+        // Обработка ошибок
+                                console.error('Ошибка при отправке запроса:', error);
+                            });
+                
+            }
         </script>
 
     </body>
