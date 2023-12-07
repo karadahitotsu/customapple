@@ -77,7 +77,7 @@ function byteArrayToDataURL(byteArray) {
 }
 function addToCart(userId,productId){
 
-    fetch(`http://localhost:8080/cart?userId=${userId}&productId=${productId}`, {
+    fetch(`http://5.39.32.179:8080/cart?userId=${userId}&productId=${productId}`, {
   method: 'POST',
 })
   .then(response => {
