@@ -34,6 +34,7 @@
     color: black;
     border: 2px solid white;
     vertical-align: middle;
+    
 
 }
 .inputname:focus + .gray-label {
@@ -44,7 +45,7 @@
     color: black;
     border: 2px solid black;
     width: 20vw;
-    height: 3;
+    height: 3vh;
 }
 .sendform{
     display: flex;

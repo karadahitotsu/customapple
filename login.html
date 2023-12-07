@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Custom Apple | Вход в аккаунт</title>
+        <link rel="stylesheet" type="text/css" href="header.css">
+        <link rel="stylesheet" type="text/css" href="user.css">
+
+        
+    </head>
+    <body>
+        <header>
+            <div class="headerdiv">
+                
+                <div class="headerlinks">
+                    <a class="headerlink" href="catalog.html">Каталог</a>
+                    <a class="headerlink" href="index.html">О нас</a>
+                    <a class="headerlink" href="make.html">Покрасим ваши</a>
+                    <a class="headerlink" href="btob.html">B2B</a>
+                    <a class="headerlink" href="galery.html">Галерея</a>
+                </div>
+                <div class="headeruser">
+                    <a class="headerlink" href="login.html">Войти</a>
+                    <a class="headerlink" href="cart.html">Корзина</a>
+                </div>
+            </div>
+        </header>
+        <div class="formdiv">
+            <div class="form">
+                <div class="input">
+                    <label >Логин</label>
+                    <input class="inputbox" type="text" id="login" name="login">
+                </div>
+                <div class="input">
+                    <label >Пароль</label>
+                    <input class="inputbox" type="password" id="password" name="password">
+                </div>
+                <button onclick="sendData()">Войти</button>
+            </div>
+            <p>Ещё не зарегистрированы? <a href="registration.html">Зарегистрируйтесь</a>.</p>
+        </div>
+        <script>
+            function sendData() {
+                var loginValue = document.getElementById("login").value;
+                var passwordValue = document.getElementById("password").value;
+        
+                fetch('http://5.39.32.179:8080/login?login=' + loginValue + '&password=' + passwordValue, {
+                    method: 'GET',
+                    // Добавление режима "no-cors" для предотвращения перенаправления
+                    
+                })
+                    .then(response => {
+                        // Если запрос не прошел успешно, генерируем ошибку
+                        if (!response.ok) {
+                            throw new Error('Ошибка при выполнении запроса. Статус: ' + response.status + ' ' + response.statusText);
+                        }
+                        // Если ответ получен успешно, извлекаем JSON
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Обработка данных, полученных в формате JSON
+                        console.log('Данные получены:', data);
+                        // Сохраняем данные в куки
+                        if(data.error=="no user"){
+                            alert("Нет такого пользователя")
+                        }
+                        else{
+                            document.cookie = 'userId=' + data.id;
+                            document.cookie = 'userName=' + data.name;
+                            alert(document.cookie)
+                        }
+                        
+                    })
+                    .catch(error => {
+                        console.error('Произошла ошибка:', error);
+                    });
+            }
+        </script>
+        
+        
+        
+    </body>
+</html>

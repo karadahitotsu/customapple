@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Custom Apple | Регистрация аккаунта</title>
+        <link rel="stylesheet" type="text/css" href="header.css">
+        <link rel="stylesheet" type="text/css" href="user.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        
+    </head>
+    <body>
+        <header>
+            <div class="headerdiv">
+                
+                <div class="headerlinks">
+                    <a class="headerlink" href="catalog.html">Каталог</a>
+                    <a class="headerlink" href="index.html">О нас</a>
+                    <a class="headerlink" href="make.html">Покрасим ваши</a>
+                    <a class="headerlink" href="btob.html">B2B</a>
+                    <a class="headerlink" href="galery.html">Галерея</a>
+                </div>
+                <div class="headeruser">
+                    <a class="headerlink" href="login.html">Войти</a>
+                    <a class="headerlink" href="cart.html">Корзина</a>
+                </div>
+            </div>
+        </header>
+        <div class="formdiv">
+            <div class="form">
+                <div class="input">
+                    <label for="login">Логин</label>
+                    <input class="inputbox" type="text" id="login" name="login">
+                </div>
+                <div class="input">
+                    <label for="password">Пароль</label>
+                    <input class="inputbox" type="password" id="password" name="password">
+                </div>
+                <div class="input">
+                    <label for="confirmPassword">Подтвердите пароль</label>
+                    <input class="inputbox" type="password" id="confirmPassword" name="confirmPassword">
+                </div>
+                <button onclick="sendData()">Зарегистрироваться</button>
+            </div>
+            <p>Уже зарегистрированы? <a href="login.html">Войдите</a>.</p>
+        </div>
+        <script>
+            function sendData() {
+    var loginValue = document.getElementById("login").value;
+    var passwordValue = document.getElementById("password").value;
+    var confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (confirmPassword !== passwordValue || passwordValue.length < 6 || loginValue.length < 6) {
+        alert("Пароли не совпадают или логин/пароль меньше 6 символов");
+        return;
+    }
+
+    var url = 'http://5.39.32.179:8080/registration' + '?login=' + encodeURIComponent(loginValue) + '&password=' + encodeURIComponent(passwordValue);
+    console.log(url);
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Ошибка сети');
+        }
+        return response.json();
+    })
+    .then(data => {
+        alert(data.status);
+    })
+    .catch(error => {
+        console.error('Произошла ошибка:', error);
+        alert('Ошибка при выполнении запроса.');
+    });
+}
+        </script>
+    </body>
+</html>

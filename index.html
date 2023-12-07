@@ -10,19 +10,17 @@
 <body>
     <header>
         <div class="headerdiv">
-            <img>
+            
             <div class="headerlinks">
                 <a class="headerlink" href="catalog.html">Каталог</a>
                 <a class="headerlink" href="index.html">О нас</a>
                 <a class="headerlink" href="make.html">Покрасим ваши</a>
-                <a class="headerlink">B2B</a>
-                <a class="headerlink">Галерея</a>
+                <a class="headerlink" href="btob.html">B2B</a>
+                <a class="headerlink" href="galery.html">Галерея</a>
             </div>
-            <div class="headercontacts">
-                <img>
-                <img>
-                <img>
-                <img>
+            <div class="headeruser">
+                <a class="headerlink" href="login.html">Войти</a>
+                <a class="headerlink" href="cart.html">Корзина</a>
             </div>
         </div>
     </header>
@@ -31,8 +29,8 @@
             <p class="divlogobigfont">Цветные ОРИГИНАЛЬНЫЕ AirPods</p>
             <p class="divlogosmallfont">СДЕЛАЕМ ИЗ ВАШИХ НАУШНИКОВ - ПРЕДМЕТ ИССКУСТВА</p>
             <div>
-                <button class="divlogobuy">Купить</button>
-                <button class="divlogoorder">ЗАКАЗАТЬ покраску своих</button>
+                <button onclick="redirectToCatalogPage()" class="divlogobuy">Купить</button>
+                <button onclick="redirectToColorPage()" class="divlogoorder">ЗАКАЗАТЬ покраску своих</button>
             </div>
 
         </div>
@@ -358,14 +356,14 @@
         </div>
     </div>
     <div class="middlebuttondiv">
-        <button class="middlebutton"> В КАТАЛОГ</button>
+        <button class="middlebutton" onclick="redirectToCatalogPage()"> В КАТАЛОГ</button>
     </div>
     <div class="blacklinediv">
         <div class="blacktext">
         <p>Не нашли нужный дизайн? Хотите преобразить свои наушники в уникальную вещь?<br>
             Не проблема - сделаем на заказ. Пришлём макет уже сегодня.</p>
         </div>
-            <button class="blackbutton">ЗАКАСТОМИТЬ СВОИ</button>
+            <button onclick="redirectToColorPage()" class="blackbutton">ЗАКАСТОМИТЬ СВОИ</button>
     </div>
     <div class="biglabel">
         <p>Кто мы?</p>
@@ -384,6 +382,14 @@
         
     </div>
 
+    <script>
+        function redirectToCatalogPage() {
+        window.location.href = "catalog.html";
+    }
+    function redirectToColorPage(){
+        window.location.href = "make.html"
+    }
+    </script>
 </body>
 
 </html>
