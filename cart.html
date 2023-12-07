@@ -88,6 +88,7 @@
                     var container = divid; // Замените на ваш идентификатор контейнера
                     for (var key in data.products) {
                         var product = data.products[key];
+                        alert(product);
                         var productHTML = createProductHTML(product);
 
                         container.appendChild(productHTML);
