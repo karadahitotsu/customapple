@@ -97,9 +97,13 @@
                 }
                 function createProductHTML(product){
                     var productDiv = document.createElement("div");
-                    var name = product.name;
-                    var price = product.price;
-                    var model = product.model;
+                    var name = document.createElement("p")
+                    name.textContent(product.name);
+                    
+                    var price = createElement("p")
+                    price.textContent(product.price+" рублей")
+                    var model = createElement("p")
+                    model.textContent(product.model)
                     return productDiv
                 }
         </script>
