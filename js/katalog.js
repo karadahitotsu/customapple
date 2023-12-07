@@ -111,7 +111,7 @@ function customFetch(filters,category,divid) {
         // Проверяем статус ответа
         if (!response.ok) {
             throw new Error('Network response was not ok');
-        }
+        }   
         // Извлекаем содержимое ответа в формате JSON
         return response.json();
     }).then(data => {

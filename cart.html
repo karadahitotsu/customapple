@@ -22,7 +22,86 @@
                 </div>
             </div>
         </header>
+        <div class="cartdiv" id="cartdiv">
+            
+        </div>
         <script src="js/iflogin.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+            var useridvalue = getCookieValue('userId');
+            fetch('http://5.39.32.179:8080/cart?usersId='+useridvalue,{
+                method: 'GET',
+
+
+            }).then(response => {
+                        // Если запрос не прошел успешно, генерируем ошибку
+                        if (!response.ok) {
+                            throw new Error('Ошибка при выполнении запроса. Статус: ' + response.status + ' ' + response.statusText);
+                        }
+                        // Если ответ получен успешно, извлекаем JSON
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Обработка данных, полученных в формате JSON
+                        console.log('Данные получены:', data);
+                        // Сохраняем данные в куки
+                        
+                            var productsid = data.items;
+                            alert(productsid)
+                            const params = new URLSearchParams();
+                            if(productsid&&productsid.length>0){
+                                productsid.forEach(idis => {
+                                    params.append('id', idis);
+                                });
+                            }
+                            var container = document.getElementById("cartdiv")
+                            const url = new URL('http://5.39.32.179:8080/cartproducts');
+                            url.search = params.toString;
+                            fetch(url, {
+                                method: 'GET'
+                            }).then(response => {
+        // Проверяем статус ответа
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+        // Извлекаем содержимое ответа в формате JSON
+                            return response.json();
+                            }).then(data => {
+        // Обработка данных, полученных в формате JSON
+                                console.log('Ответ от сервера получен', data);
+                                cartgeneration(data,container);
+                            })
+                            .catch(error => {
+        // Обработка ошибок
+                                console.error('Ошибка при отправке запроса:', error);
+                            });
+
+                            
+                        
+                        
+                    })
+                    .catch(error => {
+                        console.error('Произошла ошибка:', error);
+                    });
+                })
+                function cartgeneration(data,divid){
+                    var container = divid; // Замените на ваш идентификатор контейнера
+                    for (var key in products.products) {
+                        var product = products.products[key];
+                        var productHTML = createProductHTML(product);
+
+                        container.appendChild(productHTML);
+                    }
+                    
+                }
+                function createProductHTML(product){
+                    var productDiv = document.createElement("div");
+                    var name = product.name;
+                    var price = product.price;
+                    var model = product.model;
+                    return productDiv
+                }
+        </script>
 
     </body>
 </html>
