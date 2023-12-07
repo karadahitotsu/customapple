@@ -23,6 +23,19 @@
             </div>
         </header>
         <h1 id="hello">Добро пожаловать</h1>
+        <button onclick="deleteAllCookies()">Выйти</button>
+        <script>
+            function deleteAllCookies() {
+        var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+    }
+}
+        </script>
         <script src="js/iflogin.js"></script>
         <script>
         window.onload = function() {
