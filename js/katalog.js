@@ -28,14 +28,26 @@ function createProductHTML(product) {
     productPricesDiv.classList.add("productprices");
     var classicPrice = document.createElement("p");
     classicPrice.classList.add("classicprice");
-    classicPrice.textContent = product.price;
+    classicPrice.textContent = product.price+" рублей";
     productPricesDiv.appendChild(classicPrice);
     var productButtonsDiv = document.createElement("div");
     productButtonsDiv.classList.add("productbuttons");
     var buyButton = document.createElement("button");
     buyButton.classList.add("productbuy");
-    buyButton.textContent = "Добавить в корзину"; // Устанавливаем текст для кнопки Добавить в корзину
+    buyButton.textContent = "Добавить в корзину";
+    buyButton.addEventListener('click', function() {
+        const param1 = getCookieValue("username"); // Замените на реальные значения параметров
+        const param2 = product.id; // Замените на реальные значения параметров
+        if(param1==''){
+            alert("войдите в аккаунт")
+        }
+        else{
+            addToCart(param1, param2); // Вызываем функцию something() с параметрами param1 и param2
+
+        }
+    }); // Устанавливаем текст для кнопки Добавить в корзину
     productButtonsDiv.appendChild(buyButton);
+    
 
     // Другие элементы вашего продукта (описание, цены, кнопки и т.д.)
   
@@ -50,8 +62,8 @@ function createProductHTML(product) {
 
     return productDiv;
 }
-function kataloggeneration(products){
-var container = document.getElementById("products"); // Замените на ваш идентификатор контейнера
+function kataloggeneration(products,divid){
+var container = document.getElementById(divid); // Замените на ваш идентификатор контейнера
 // Пройдитесь по всем продуктам и создайте HTML для каждого из них
 for (var key in products.products) {
   var product = products.products[key];
@@ -63,7 +75,19 @@ for (var key in products.products) {
 function byteArrayToDataURL(byteArray) {
     return "data:image/jpg;base64," + byteArray;
 }
-function customFetch(filters) {
+function addToCart(userId,productId){
+
+    fetch(`http://localhost:8080/cart?userId=${userId}&productId=${productId}`, {
+  method: 'POST',
+})
+  .then(response => {
+    // Обработка ответа
+  })
+  .catch(error => {
+    // Обработка ошибок
+  });
+}
+function customFetch(filters,category,divid) {
     // Преобразование массива фильтров в строку с параметрами для URL
     const params = new URLSearchParams();
     if (filters && filters.length > 0) {
@@ -71,12 +95,16 @@ function customFetch(filters) {
             params.append('filters', filter);
         });
     }
-    var container = document.getElementById("products");
+    if(category!='none'){
+        params.append('category',category)
+    }
+    var container = document.getElementById(divid);
     container.innerHTML=''
 
     // Формирование URL с параметрами фильтров
     const url = new URL('http://5.39.32.179:8080/katalog');
     url.search = params.toString();
+    console.log(url)
     fetch(url, {
         method: 'GET'
     }).then(response => {
@@ -89,7 +117,7 @@ function customFetch(filters) {
     }).then(data => {
         // Обработка данных, полученных в формате JSON
         console.log('Ответ от сервера получен', data);
-        kataloggeneration(data);
+        kataloggeneration(data,divid);
     })
     .catch(error => {
         // Обработка ошибок

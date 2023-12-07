@@ -39,7 +39,7 @@
         <p>УНИВЕРСАЛЬНОЕ ПРЕДЛОЖЕНИЕ</p>
     </div>
     <div class="center">
-        <div class="products">
+        <div class="products" id="universals">
 
 
             <div class="product">
@@ -149,7 +149,7 @@
         <p>ВЫБОР НАШИХ ДИЗАЙНЕРОВ</p>
     </div>
     <div class="center">
-        <div class="products">
+        <div class="products" id="designers">
 
 
             <div class="product">
@@ -390,7 +390,15 @@
         window.location.href = "make.html"
     }
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            customFetch([],'designer','designers');
+            customFetch([],'universal','universals');
+        })
+    
+    </script>
     <script src="js/iflogin.js"></script>
+    <script src="js/katalog.js"></script>
 </body>
 
 </html>

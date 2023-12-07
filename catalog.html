@@ -44,7 +44,7 @@
         <input type="checkbox" id="airpods pro 2" name="airpods pro 2" onchange="handleCheckboxChange(this)">
         <label for="airpods pro 2">airpods pro 2</label><br>
         </div>
-        <button class="search" onclick="customFetch(selectedItems)"> search</button>
+        <button class="search" onclick="customFetch(selectedItems,'none','products')"> search</button>
     </div>
     <div class="products" id="products">
 
@@ -71,27 +71,9 @@
 
    <script>
     document.addEventListener("DOMContentLoaded", function() {
-        fetch('http://5.39.32.179:8080/katalog', {
-            method: 'GET'
-        })
-        .then(response => {
-        // Проверяем статус ответа
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        // Извлекаем содержимое ответа в формате JSON
-        return response.json();
+        customFetch(selectedItems,'none','products')
     })
-    .then(data => {
-        // Обработка данных, полученных в формате JSON
-        console.log('Ответ от сервера получен', data);
-        kataloggeneration(data);
-    })
-    .catch(error => {
-        // Обработка ошибок
-        console.error('Ошибка при отправке запроса:', error);
-    });
-    });
+
 </script>
 
 
