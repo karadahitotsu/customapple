@@ -81,10 +81,10 @@ function addToCart(userId,productId){
   method: 'POST',
 })
   .then(response => {
-    // Обработка ответа
+    alert(response.json)
   })
   .catch(error => {
-    // Обработка ошибок
+    alert(response.error)
   });
 }
 function customFetch(filters,category,divid) {
