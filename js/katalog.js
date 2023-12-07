@@ -36,7 +36,7 @@ function createProductHTML(product) {
     buyButton.classList.add("productbuy");
     buyButton.textContent = "Добавить в корзину";
     buyButton.addEventListener('click', function() {
-        const param1 = getCookieValue("username"); // Замените на реальные значения параметров
+        const param1 = getCookieValue("userName"); // Замените на реальные значения параметров
         const param2 = product.id; // Замените на реальные значения параметров
         if(param1==''){
             alert("войдите в аккаунт")
