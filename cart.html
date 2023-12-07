@@ -56,7 +56,7 @@
                             }
                             var container = document.getElementById("cartdiv")
                             const url = new URL('http://5.39.32.179:8080/cartproducts');
-                            url.search = params.toString;
+                            url.search = params.toString();
                             fetch(url, {
                                 method: 'GET'
                             }).then(response => {
