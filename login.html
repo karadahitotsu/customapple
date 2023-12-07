@@ -28,7 +28,7 @@
             <div class="form">
                 <div class="input">
                     <label >Логин</label>
-                    <input class="inputbox" type="text" id="login" name="login">
+                    <input class="inputbox" type="text" id="loginn" name="login">
                 </div>
                 <div class="input">
                     <label >Пароль</label>
@@ -40,7 +40,7 @@
         </div>
         <script>
             function sendData() {
-                var loginValue = document.getElementById("login").value;
+                var loginValue = document.getElementById("loginn").value;
                 var passwordValue = document.getElementById("password").value;
         
                 fetch('http://5.39.32.179:8080/login?login=' + loginValue + '&password=' + passwordValue, {
