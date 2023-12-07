@@ -5,7 +5,7 @@ function checkUserIdCookie() {
     var userId = getCookieValue('userId'); // Функция для получения значения куки по имени
     if (userId !== '') {
         aaa = document.getElementById("login");
-        aaa.innerHtml = "Профиль";
+        aaa.textContent = "Профиль";
         aaa.href = "profile.html"
     } 
 }
