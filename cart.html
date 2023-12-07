@@ -86,8 +86,8 @@
                 })
                 function cartgeneration(data,divid){
                     var container = divid; // Замените на ваш идентификатор контейнера
-                    for (var key in products.products) {
-                        var product = products.products[key];
+                    for (var key in data.products) {
+                        var product = data.products[key];
                         var productHTML = createProductHTML(product);
 
                         container.appendChild(productHTML);
