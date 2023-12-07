@@ -81,10 +81,10 @@ function addToCart(userId,productId){
   method: 'POST',
 })
   .then(response => {
-    alert(response.json)
+    
   })
   .catch(error => {
-    alert(response.error)
+    
   });
 }
 function customFetch(filters,category,divid) {
