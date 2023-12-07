@@ -104,6 +104,10 @@
                     price.textContent=(product.price+" рублей")
                     var model = document.createElement("p")
                     model.textContent=(product.model)
+                    productDiv.appendChild(name);
+                    productDiv.appendChild(price);
+                    productDiv.appendChild(model);
+
                     return productDiv
                 }
         </script>
