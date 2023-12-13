@@ -1,0 +1,14 @@
+.biglabel{
+    display: flex;
+    justify-content: center;
+    font-size: 46px;
+    padding-top: 60px;
+    padding-bottom: 30px;
+}
+.aboutus{
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    padding-top: 0px;
+    padding-bottom: 30px;
+}
