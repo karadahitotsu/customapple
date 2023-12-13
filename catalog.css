@@ -64,39 +64,45 @@
     height: 35px;
     border-radius: 5px;
 }
-#checkboxContainer {
-    padding-left: 10px;
-    width: 20vw; /* Ограничиваем ширину до максимума 20vw */
-    position: absolute;
-    vertical-align: middle;
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: column;
-    align-items: baseline;
-    justify-content: space-evenly;
-    height: 90%;
-}
-.category{
-    width: 60%;
-    font-size: 22px;
 
-}
-input[type="checkbox"] {
-    /* Устанавливаем цвет фона чекбокса на красный */
-    background-color: red;
-  }
+
   
 
+
+
+
+#checkboxContainer {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: fixed;
+    top: 57px; /* Расположение от верха страницы */
+    width: 200px; /* Ширина колонки */
+    z-index: 999; /* Поднятие над другими элементами на странице */
+}
+
+.category {
+    margin-bottom: 10px;
+}
+
 input[type="checkbox"] {
-    margin: 5px 0;
+    margin-right: 10px;
 }
-.checkbox{
-    margin-bottom: 50px;
-}
-.search{
-    width: 10vw;
-    background-color: orange;
-    border: none;
+
+button.search {
+    padding: 10px 20px;
+    background-color: #f44336;
     color: white;
-    height: 5vh;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Растягиваем кнопку на всю ширину блока */
+    margin-top: 10px; /* Отступ сверху от фильтров */
 }
+
+button.search:hover {
+    background-color: #d32f2f;
+}
+

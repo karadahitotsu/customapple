@@ -89,6 +89,9 @@ function addToCart(userId,productId){
 }
 function customFetch(filters,category,divid) {
     // Преобразование массива фильтров в строку с параметрами для URL
+    var button =document.getElementById("searchbutton")
+    button.textContent="загрузка";
+    button.disabled = true;
     const params = new URLSearchParams();
     if (filters && filters.length > 0) {
         filters.forEach(filter => {
@@ -110,12 +113,16 @@ function customFetch(filters,category,divid) {
     }).then(response => {
         // Проверяем статус ответа
         if (!response.ok) {
+            button.textContent="search";
+            button.disabled = false;
             throw new Error('Network response was not ok');
         }   
         // Извлекаем содержимое ответа в формате JSON
         return response.json();
     }).then(data => {
         // Обработка данных, полученных в формате JSON
+        button.textContent="search";
+        button.disabled = false;
         console.log('Ответ от сервера получен', data);
         kataloggeneration(data,divid);
     })

@@ -68,7 +68,7 @@
         return response.json();
     })
     .then(data => {
-        alert(data.status);
+        window.location.href = "login.html"
     })
     .catch(error => {
         console.error('Произошла ошибка:', error);

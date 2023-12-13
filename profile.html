@@ -3,6 +3,8 @@
     <head>
         <title>Custom Apple | Профиль</title>
         <link rel="stylesheet" type="text/css" href="header.css">
+        <link rel="stylesheet" type="text/css" href="profile.css">
+
 
     </head>
     <body>
@@ -20,8 +22,12 @@
                 </div>
             </div>
         </header>
+        <div class="columnstyle">
         <h1 id="hello">Добро пожаловать</h1>
+        
+        <a class="gotocart" href="cart.html">Перейти в корзину</a>
         <button onclick="deleteAllCookies()">Выйти</button>
+    </div>
         <script>
             function deleteAllCookies() {
         var cookies = document.cookie.split(";");
