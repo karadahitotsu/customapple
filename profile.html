@@ -15,7 +15,6 @@
                     <a class="headerlink" href="catalog.html">Каталог</a>
                     <a class="headerlink" href="index.html">О нас</a>
                     <a class="headerlink" href="make.html">Покрасим ваши</a>
-                    <a class="headerlink" href="btob.html">B2B</a>
                     <a class="headerlink" id="login" href="login.html">Войти</a>
                     <a class="headerlink" href="cart.html">Корзина</a>
                 </div>
@@ -37,6 +36,7 @@
         var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
         document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
     }
+    window.location.href = "login.html";
 }
         </script>
         <script src="js/iflogin.js"></script>

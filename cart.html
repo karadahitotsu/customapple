@@ -14,7 +14,6 @@
                     <a class="headerlink" href="catalog.html">Каталог</a>
                     <a class="headerlink" href="index.html">О нас</a>
                     <a class="headerlink" href="make.html">Покрасим ваши</a>
-                    <a class="headerlink" href="btob.html">B2B</a>
                     <a class="headerlink" id="login" href="login.html">Войти</a>
                     <a class="headerlink" href="cart.html">Корзина</a>
                 </div>
@@ -139,6 +138,8 @@
         // Извлекаем содержимое ответа в формате JSON
                             return response.json();
                             }).then(data => {
+                                var productToRemove = document.querySelector(".cart-product p:nth-of-type(3):contains('" + productid + "')").parentNode;
+                                productToRemove.parentNode.removeChild(productToRemove);
         // Обработка данных, полученных в формате JSON
                                 console.log(data)
                             })
