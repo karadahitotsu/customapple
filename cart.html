@@ -138,9 +138,15 @@
         // Извлекаем содержимое ответа в формате JSON
                             return response.json();
                             }).then(data => {
-                                var productToRemove = document.querySelector(".cart-product p:nth-of-type(3):contains('" + productid + "')").parentNode;
-                                productToRemove.parentNode.removeChild(productToRemove);
-        // Обработка данных, полученных в формате JSON
+                                var products = document.querySelectorAll(".cart-product");
+                                products.forEach(product => {
+        var productIdElement = product.querySelector("p:nth-of-type(3)"); // Получим элемент с ID товара
+
+        // Если элемент существует и его текст равен ID удаляемого товара, удаляем соответствующий товар из DOM
+        if (productIdElement && productIdElement.textContent === productid) {
+            product.parentNode.removeChild(product);
+        }
+    });        // Обработка данных, полученных в формате JSON
                                 console.log(data)
                             })
                             .catch(error => {
