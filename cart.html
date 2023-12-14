@@ -141,6 +141,7 @@
     for (var i = 1; i < cartProducts.length; i++) {
         cartProducts[i].parentNode.removeChild(cartProducts[i]);
     }
+    loadCartData();
                             })
                             .catch(error => {
         // Обработка ошибок
