@@ -43,7 +43,7 @@ function createProductHTML(product) {
         }
         else{
             addToCart(param1, param2); // Вызываем функцию something() с параметрами param1 и param2
-
+            alert("Товар добавлен в корзину")
         }
     }); // Устанавливаем текст для кнопки Добавить в корзину
     productButtonsDiv.appendChild(buyButton);
@@ -135,7 +135,7 @@ function customFetch(filters,category,divid) {
             button.disabled = false;
         }
         catch(err){
-            
+
         }
         
         console.log('Ответ от сервера получен', data);
