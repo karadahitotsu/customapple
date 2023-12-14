@@ -78,7 +78,7 @@
     padding: 20px;
     position: fixed;
     top: 57px; /* Расположение от верха страницы */
-    width: 200px; /* Ширина колонки */
+    width: 13vw; /* Ширина колонки */
     z-index: 999; /* Поднятие над другими элементами на странице */
 }
 
@@ -104,5 +104,10 @@ button.search {
 
 button.search:hover {
     background-color: #d32f2f;
+}
+@media (max-width: 980px) {
+    #checkboxContainer {
+        top: 50vh;
+    }
 }
 

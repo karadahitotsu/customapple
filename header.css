@@ -27,7 +27,7 @@ a {
     .headerdiv{
         flex-direction: column;
         height: 50vh;
-        font-size: 16px;
+        font-size: 50px;
     }
     .headerlinks{
         display: flex;

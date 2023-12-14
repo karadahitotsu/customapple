@@ -54,3 +54,16 @@
     justify-content: center;
     
 }
+.middlebuttondiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+.middlebutton{
+    padding: 0px 60px;
+    height: 60px;
+    background-color: white;
+    border: 3px solid black;
+}
