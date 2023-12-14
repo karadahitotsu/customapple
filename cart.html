@@ -31,62 +31,56 @@
         </div>
         <script src="js/iflogin.js"></script>
         <script>
-            document.addEventListener("DOMContentLoaded", function() {
-            var useridvalue = getCookieValue('userId');
-            fetch('http://5.39.32.179:8080/cart?usersId='+useridvalue,{
+            function loadCartData() {
+        var useridvalue = getCookieValue('userId');
+        fetch('http://5.39.32.179:8080/cart?usersId=' + useridvalue, {
                 method: 'GET',
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Ошибка при выполнении запроса. Статус: ' + response.status + ' ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Данные получены:', data);
 
+                var productsid = data.items;
+                const params = new URLSearchParams();
+                if (productsid && productsid.length > 0) {
+                    productsid.forEach(idis => {
+                        params.append('id', idis);
+                    });
+                }
 
-            }).then(response => {
-                        // Если запрос не прошел успешно, генерируем ошибку
+                var container = document.getElementById("cartdiv")
+                const url = new URL('http://5.39.32.179:8080/cartproducts');
+                url.search = params.toString();
+                fetch(url, {
+                        method: 'GET'
+                    })
+                    .then(response => {
                         if (!response.ok) {
-                            throw new Error('Ошибка при выполнении запроса. Статус: ' + response.status + ' ' + response.statusText);
+                            throw new Error('Network response was not ok');
                         }
-                        // Если ответ получен успешно, извлекаем JSON
                         return response.json();
                     })
                     .then(data => {
-                        // Обработка данных, полученных в формате JSON
-                        console.log('Данные получены:', data);
-                        // Сохраняем данные в куки
-                        
-                            var productsid = data.items;
-                            const params = new URLSearchParams();
-                            if(productsid&&productsid.length>0){
-                                productsid.forEach(idis => {
-                                    params.append('id', idis);
-                                });
-                            }
-                            var container = document.getElementById("cartdiv")
-                            const url = new URL('http://5.39.32.179:8080/cartproducts');
-                            url.search = params.toString();
-                            fetch(url, {
-                                method: 'GET'
-                            }).then(response => {
-        // Проверяем статус ответа
-                            if (!response.ok) {
-                                throw new Error('Network response was not ok');
-                            }
-        // Извлекаем содержимое ответа в формате JSON
-                            return response.json();
-                            }).then(data => {
-        // Обработка данных, полученных в формате JSON
-                                console.log('Ответ от сервера получен', data);
-                                cartgeneration(data,container);
-                            })
-                            .catch(error => {
-        // Обработка ошибок
-                                console.error('Ошибка при отправке запроса:', error);
-                            });
-
-                            
-                        
-                        
+                        console.log('Ответ от сервера получен', data);
+                        cartgeneration(data, container);
                     })
                     .catch(error => {
-                        console.error('Произошла ошибка:', error);
+                        console.error('Ошибка при отправке запроса:', error);
                     });
-                })
+            })
+            .catch(error => {
+                console.error('Произошла ошибка:', error);
+            });
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        loadCartData(); // Вызов функции при загрузке страницы
+    });
                 function cartgeneration(data,divid){
                     var container = divid; // Замените на ваш идентификатор контейнера
                     for (var key in data.products) {
@@ -138,16 +132,15 @@
         // Извлекаем содержимое ответа в формате JSON
                             return response.json();
                             }).then(data => {
-                                var products = document.querySelectorAll(".cart-product");
-                                products.forEach(product => {
-        var productIdElement = product.querySelector("p:nth-of-type(3)"); // Получим элемент с ID товара
+                                 // Обработка данных, полученных в формате JSON
 
-        // Если элемент существует и его текст равен ID удаляемого товара, удаляем соответствующий товар из DOM
-        if (productIdElement && productIdElement.textContent === productid) {
-            product.parentNode.removeChild(product);
-        }
-    });        // Обработка данных, полученных в формате JSON
                                 console.log(data)
+                                var cartProducts = document.querySelectorAll('.cart-product');
+
+    // Удаляем все элементы, начиная со второго
+    for (var i = 1; i < cartProducts.length; i++) {
+        cartProducts[i].parentNode.removeChild(cartProducts[i]);
+    }
                             })
                             .catch(error => {
         // Обработка ошибок
